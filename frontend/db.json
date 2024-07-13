@@ -1,0 +1,148 @@
+{
+  "users": [
+    {
+      "id": "4900",
+      "email": "ironman@gamil.com",
+      "fullName": "Iron man",
+      "userName": "iron123",
+      "password": "123456",
+      "post": [],
+      "profileBio": {
+        "profileImg": "https://i.ibb.co/VvJKBmh/Screenshot-20221224-210829.png",
+        "bioCaption": "simple and normal ex microsoft"
+      }
+    },
+    {
+      "id": "cec9",
+      "email": "masoom12@gamil.com",
+      "fullName": "Masoom raja",
+      "userName": "masoom09",
+      "password": "123456",
+      "post": [],
+      "profileBio": {
+        "profileImg": "https://i.ibb.co/tCKBDkR/Screenshot-2024-03-10-123458.png",
+        "bioCaption": "welcome to my profile Hi i am inspiring software developer"
+      }
+    },
+    {
+      "id": "e80b",
+      "email": "masoom12@gamil.com",
+      "fullName": "thor",
+      "userName": "thor09",
+      "password": "123456",
+      "post": [],
+      "profileBio": {
+        "profileImg": "https://i.ibb.co/gTbxYWh/2023-02-16.png",
+        "bioCaption": "hey this is the official thor profile"
+      }
+    },
+    {
+      "id": "faea",
+      "email": "masoom12+1@gamil.com",
+      "fullName": "Masoom raja1",
+      "userName": "thor10",
+      "password": "123456",
+      "post": [],
+      "profileBio": {
+        "profileImg": "https://i.ibb.co/6Ydjzcp/1.png",
+        "bioCaption": "test"
+      }
+    }
+  ],
+  "post": [
+    {
+      "id": "5cce",
+      "userName": "iron123",
+      "post": "https://i.ibb.co/FYrWkPf/Screenshot-2023-04-25-215604.png",
+      "profileBio": {
+        "profileImg": "https://i.ibb.co/VvJKBmh/Screenshot-20221224-210829.png",
+        "bioCaption": "simple and normal ex microsoft"
+      },
+      "caption": "binary search tree",
+      "like": 2,
+      "comment": [
+        {
+          "time": "8:21 June",
+          "profilepic": "https://i.ibb.co/VvJKBmh/Screenshot-20221224-210829.png",
+          "username": "iron123",
+          "comment": "its quite difficult bro"
+        },
+        {
+          "time": "8:22 June",
+          "profilepic": "https://i.ibb.co/VvJKBmh/Screenshot-20221224-210829.png",
+          "username": "iron123",
+          "comment": "but i will solve it "
+        },
+        {
+          "time": "9:10 June",
+          "profilepic": "https://i.ibb.co/BLtpfFb/2023-02-16.png",
+          "username": "masoom09",
+          "comment": " i will solve it easily and in minimum time"
+        },
+        {
+          "time": "14:55 June",
+          "profilepic": "https://i.ibb.co/6Ydjzcp/1.png",
+          "username": "thor10",
+          "comment": "tugjosato"
+        }
+      ]
+    },
+    {
+      "id": "7cab",
+      "userName": "masoom09",
+      "post": "https://i.ibb.co/SRykCRP/Screenshot-2023-11-16-195333.png",
+      "profileBio": {
+        "profileImg": "https://i.ibb.co/BLtpfFb/2023-02-16.png",
+        "bioCaption": "student of IIT AIMS"
+      },
+      "caption": "my mind is full of garbadge dust and negative thinking",
+      "like": 1,
+      "comment": []
+    },
+    {
+      "id": "9b9f",
+      "userName": "masoom09",
+      "post": "https://i.ibb.co/RQJpwTs/maps.png",
+      "profileBio": {
+        "profileImg": "https://i.ibb.co/DkttC21/2022-12-24.png",
+        "bioCaption": "hm to na sahte"
+      },
+      "caption": "maps",
+      "like": 2,
+      "comment": [
+        {
+          "time": "14:54 June",
+          "profilepic": "https://i.ibb.co/6Ydjzcp/1.png",
+          "username": "thor10",
+          "comment": "asddsa"
+        }
+      ]
+    },
+    {
+      "id": "baf8",
+      "userName": "thor10",
+      "post": "https://i.ibb.co/swKD6V5/2022-12-29.png",
+      "profileBio": {
+        "profileImg": "",
+        "CoverImg": "",
+        "bioCaption": ""
+      },
+      "caption": "my new post",
+      "like": 2,
+      "comment": [
+        {
+          "time": "14:54 June",
+          "profilepic": "https://i.ibb.co/6Ydjzcp/1.png",
+          "username": "thor10",
+          "comment": "asdsa"
+        },
+        {
+          "time": "14:54 June",
+          "profilepic": "https://i.ibb.co/6Ydjzcp/1.png",
+          "username": "thor10",
+          "comment": "asdsad"
+        }
+      ]
+    }
+  ]
+}
