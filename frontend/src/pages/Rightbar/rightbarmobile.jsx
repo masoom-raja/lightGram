@@ -6,7 +6,7 @@ import { login, profile, toggle } from "../../redux/userauth";
 
 function Rightbarmobile() {
   const darkmode = useSelector((state) => state.theme.darkmode);
-  const user = useSelector((state) => state.auth.user);
+  const {user} = useSelector((state) => state.auth.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,25 +35,33 @@ function Rightbarmobile() {
         console.error("Error fetching user:", error);
       }
     };
-
+  
     fetchData();
 
   }, [user.following]);
 
   const handleFollowClick = async (frienduser, e) => {
     e.preventDefault();
-    // console.log(frienduser._id); // This will log the userName to the console
+    // console.log(frienduser); // This will log the userName to the console
     const newuser = { ...user, following: [...user.following, frienduser._id] };
-
+    const newuser1 = { ...frienduser, followers: [...frienduser.followers, user._id] };
+    
     try {
       await axios.put('http://localhost:5000/updateuser', newuser);
+      await axios.put('http://localhost:5000/updateuser', newuser1);
       // console.log(newuser, "after pushing");
-      dispatch(login(newuser));
-      dispatch(profile(frienduser));
+      let data = localStorage.getItem("token");
+      data=JSON.parse(data)
+      dispatch(login({user:newuser, token:data.token}));
+      localStorage.setItem("token", JSON.stringify({user:newuser, token:data.token}));
+      dispatch(toggle())
+      dispatch(profile(newuser1));
+      localStorage.setItem('profile', JSON.stringify(newuser1));
     } catch (err) {
       console.log(err);
     }
   };
+
 
   const handleUnFollowClick = async (frienduser, e) => {
     e.preventDefault();
@@ -62,20 +70,31 @@ function Rightbarmobile() {
       ...user, 
       following: user.following.filter(followingId => followingId !== frienduser._id) 
     };
-    // console.log(newuser,"unfollowing successfully")      
+    const newuser1={ 
+     ...frienduser,followers:frienduser.followers.filter(followersid=>followersid!=user._id)
+    }
+// console.log(newuser,"unfollowing successfully")  
+// console.log(newuser1,"unfollowing1 successfully")      
+
     try {
       await axios.put('http://localhost:5000/updateuser', newuser);
+      await axios.put('http://localhost:5000/updateuser', newuser1);
       // console.log(newuser, "after unfollowing.");
-      dispatch(login(newuser));
-      dispatch(profile(frienduser));
+      let data = localStorage.getItem("token");
+      data=JSON.parse(data)
+      dispatch(login({user:newuser, token:data.token}));
+      localStorage.setItem("token", JSON.stringify({user:newuser, token:data.token}));
+      dispatch(profile(newuser1));
+      localStorage.setItem('profile', JSON.stringify(newuser1));
     } catch (err) {
       console.log(err);
     }
   };
-
   const handleProfileClick = (frienduser, e) => {
     e.preventDefault();
+    console.log(frienduser,"profileClick")
     dispatch(profile(frienduser));
+    localStorage.setItem('profile', JSON.stringify(frienduser));
     dispatch(toggle())
     navigate('/profilefriend');
   };

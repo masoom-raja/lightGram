@@ -11,7 +11,7 @@ import { MdAutoAwesome } from "react-icons/md";
 import { toggle } from "../redux/userauth";
 
 function Post(props) {
-  const user = useSelector((state) => state.auth.user);
+  const {user} = useSelector((state) => state.auth.user);
   const [postLikes, setPostLikes] = useState(Array.from(props.post.likes));
   const [like, setLike] = useState(postLikes.includes(user._id));
   const [openComment, setOpenComment] = useState(false);

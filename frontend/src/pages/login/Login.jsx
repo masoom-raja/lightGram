@@ -41,8 +41,9 @@ function Login() {
       );
 
       if (response.data && response.data.user) {
-        localStorage.setItem("token", response.data.token);
-        dispatch(login(response.data.user ));
+        localStorage.setItem("token", JSON.stringify({user:response.data.user, token: response.data.token}));
+        dispatch(login({user:response.data.user, token: response.data.token}));
+
         navigate("/"); // Redirect to home page after successful login
       } else {
         console.error("Login response did not contain user data");

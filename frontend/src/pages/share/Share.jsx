@@ -8,11 +8,12 @@
 
 
   function Share() {
-    const users = useSelector((state) => state.auth.user);
+    const {user} = useSelector((state) => state.auth.user);
+    console.log(user)
     const dispatch = useDispatch();
 
     const [file, setFile] = useState({
-      user: null,
+      user1: null,
       caption: "",
       imageUrl: null,
     });
@@ -20,7 +21,7 @@
 
 
     const handleFileChange = (e) => {
-      setFile({ ...file, imageUrl: e.target.files[0], user: users._id });
+      setFile({ ...file, imageUrl: e.target.files[0], user1: user._id });
   };
 
   const handleSubmit = async (e) => {
@@ -32,7 +33,7 @@
       if (file.imageUrl) {
           const data = new FormData();
           data.append("imageUrl", file.imageUrl);
-          data.append("user", file.user);
+          data.append("user", file.user1);
           data.append("caption", file.caption);
 
           // console.log(data, "data..........inside if");
@@ -55,7 +56,7 @@
             // console.log(Loading)
         }
       }
-      setFile({ user: null, caption: "", imageUrl: null });
+      setFile({ user1: null, caption: "", imageUrl: null });
   };
 
     return (
@@ -65,7 +66,7 @@
             <div className="flex gap-5 items-center w-full">
               <div className="profile">
                 <img
-                  src={users.profilePicture}
+                  src={user.profilePicture}
                   alt="img"
                   className="w-8 h-8 rounded-full object-cover"
                 />

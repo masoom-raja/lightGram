@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Post from "../../post/post";
 
-function Profilefriend(props){
+function Profilefriend(){
     const profile=useSelector((state)=>state.auth.profile)
     const toggle=useSelector((state)=>state.auth.toggle)
-    // console.log(profile,"userprofile")
+    console.log(profile,"userprofile")
     const darkmode=useSelector((state)=>state.theme.darkmode)
     const [postdata,setpostdata]=useState([])
  const data=null

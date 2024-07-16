@@ -20,6 +20,7 @@ function Groupchat() {
     message: "",
   });
   const [chatdisplay, setchatdisplay] = useState([]);
+  console.log(users.user,"chart..........")
 
   useEffect(() => {
     const fetchChat = async () => {
@@ -38,7 +39,7 @@ function Groupchat() {
   }, [dep]);
 
   const handleFileChange = (e) => {
-    setchat({ ...chat, message: e.target.value, user: users._id });
+    setchat({ ...chat, message: e.target.value, user: users.user._id });
   };
   const handlechat = async (e) => {
     e.preventDefault();
@@ -61,7 +62,7 @@ function Groupchat() {
       setchat({ user: null, message: "" });
     }
   };
-  // console.log(chatdisplay, "display.......................");
+   console.log(chatdisplay, "display.......................");
 
   return (
     <div className={darkmode ? "dark" : ""}>
@@ -78,7 +79,7 @@ function Groupchat() {
 
               <div className="h-screen overflow-y-auto p-4 pb-36">
                 {chatdisplay.map((chat, index) =>
-                  chat.user._id === users._id ? (
+                  chat.user._id === users.user._id ? (
                     <div className="flex justify-end mb-4 cursor-pointer">
                       <div className="flex max-w-96 bg-indigo-500 text-white rounded-lg p-3 gap-3">
                         <p>{chat.message}</p>

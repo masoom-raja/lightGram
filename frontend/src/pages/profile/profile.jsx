@@ -14,7 +14,7 @@ function Profile(props){
   //   console.log("inuseeffect",users)
   //   setUser(users);
   // }, [users]);
-   const {user}=useSelector((state)=>state.auth)
+   const {user}=useSelector((state)=>state.auth.user)
     const darkmode=useSelector((state)=>state.theme.darkmode)
     const [postdata,setpostdata]=useState([])
     const toggle=useSelector((state)=>state.auth.toggle)

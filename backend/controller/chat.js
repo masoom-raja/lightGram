@@ -10,13 +10,16 @@ const getchat=async (req,res)=>{
 }
 }
 
-const createchat=async (req,res)=>{
-    const doc=req.body;
-    try{
-     const response= await chatmodel.create(doc)
-     res.status(201).send({message:"successfully",data:response})
-    }catch(err){
-        res.status(500).send("some issue",err)
+const createchat = async (req, res) => {
+    const doc=req.body
+    console.log(doc);
+    try {
+        const response = await chatmodel.create(doc);
+        res.status(201).send({ message: "Chat created successfully", data: response });
+    } catch (err) {
+        console.error("Error creating chat:", err);
+        res.status(500).send({ message: "An error occurred while creating the chat", error: err.message });
     }
-}
+};
+
 module.exports={getchat,createchat}

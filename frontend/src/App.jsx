@@ -10,22 +10,30 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './pages/navbar/navbar';
 import Leftbar from './pages/leftbar/leftbar';
 import Rightbar from './pages/Rightbar/rightbar';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import Footer from './pages/footer/footer.jsx';
+import { login, profile } from './redux/userauth.js';
 
 function App() {
-  const { isloggedin } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
   const [Token,setToken]=useState("")
+  const dispatch = useDispatch();
+
   useEffect(()=>{
-    const token = localStorage.getItem("token");
-    setToken(token)
-//  console.log(token,"local storage token")
-  },[isloggedin])
+    let data = localStorage.getItem("token");
+    let profiles=localStorage.getItem("profile");
+    if(data){
+      data=JSON.parse(data);
+      dispatch(login({user:data.user,token:data.token}))
+      profiles=JSON.parse(profiles);
+      dispatch(profile(profiles))
+    }
+  },[])
   // console.log("loggedin", isloggedin);
 
   return (
     <div className='relative'>
-      { Token && isloggedin ? (
+      { token ? (
         <Provider store={store}>
           <div>
             <Navbar />

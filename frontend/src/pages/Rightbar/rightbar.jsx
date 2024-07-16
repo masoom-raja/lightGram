@@ -6,7 +6,7 @@ import { login, profile, toggle } from "../../redux/userauth";
 
 function Rightbar() {
     const darkmode = useSelector((state) => state.theme.darkmode);
-    const user = useSelector((state) => state.auth.user);
+    const {user} = useSelector((state) => state.auth.user);
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -50,9 +50,13 @@ function Rightbar() {
         await axios.put('http://localhost:5000/updateuser', newuser);
         await axios.put('http://localhost:5000/updateuser', newuser1);
         // console.log(newuser, "after pushing");
-        dispatch(login(newuser));
+        let data = localStorage.getItem("token");
+        data=JSON.parse(data)
+        dispatch(login({user:newuser, token:data.token}));
+        localStorage.setItem("token", JSON.stringify({user:newuser, token:data.token}));
         dispatch(toggle())
         dispatch(profile(newuser1));
+        localStorage.setItem('profile', JSON.stringify(newuser1));
       } catch (err) {
         console.log(err);
       }
@@ -76,15 +80,22 @@ function Rightbar() {
         await axios.put('http://localhost:5000/updateuser', newuser);
         await axios.put('http://localhost:5000/updateuser', newuser1);
         // console.log(newuser, "after unfollowing.");
-        dispatch(login(newuser));
+        let data = localStorage.getItem("token");
+        data=JSON.parse(data)
+        dispatch(login({user:newuser, token:data.token}));
+        localStorage.setItem("token", JSON.stringify({user:newuser, token:data.token}));
         dispatch(profile(newuser1));
+        localStorage.setItem('profile', JSON.stringify(newuser1));
       } catch (err) {
         console.log(err);
       }
     };
     const handleProfileClick = (frienduser, e) => {
       e.preventDefault();
+      console.log(frienduser,"profileClick")
       dispatch(profile(frienduser));
+      localStorage.setItem('profile', JSON.stringify(frienduser));
+      dispatch(toggle())
       navigate('/profilefriend');
     };
 

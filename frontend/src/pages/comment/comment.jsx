@@ -5,7 +5,7 @@ import { toggle } from "../../redux/userauth";
 
 function Comment(props) {
   const dispatch = useDispatch();
-  const responseUser = useSelector((state) => state.auth.user);
+  const {user} = useSelector((state) => state.auth.user);
    console.log(props.id.comments,"lllllllllllllllllllllllllllllllllllllllll");
   const [newComment, setNewComment] = useState("");
 
@@ -38,8 +38,8 @@ function Comment(props) {
     const newCommentObject = {
       time: time,
       // profilepic:responseUser.user.profileBio.profileImg,
-      userId:responseUser._id,
-      userName: responseUser.userName,
+      userId:user._id,
+      userName:user.userName,
       text: newComment,
     };
 
@@ -70,7 +70,7 @@ function Comment(props) {
         <div className="search flex gap-3">
           <div className="profile">
             <img
-              src={responseUser.profilePicture}
+              src={user.profilePicture}
               alt="img"
               className="w-8 h-8 rounded-full object-cover"
             />
